@@ -10,6 +10,8 @@ COPY . .
 RUN npm run build
 
 # Serve stage
-FROM nginx:stable-alpine
+FROM httpd:2.4 AS runtime
 
-COPY --from=build /app/dist /usr/share/nginx/html
+COPY --from=build /app/dist /usr/local/apache2/htdocs/
+
+EXPOSE 80
