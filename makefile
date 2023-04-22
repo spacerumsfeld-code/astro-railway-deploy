@@ -24,4 +24,4 @@ make docker-build:
 
 make docker-run:
 	@echo "Running docker image..."
-	docker run -p 3000:3000 -d astro-app
+	docker run -p 80:80 -d astro-app
