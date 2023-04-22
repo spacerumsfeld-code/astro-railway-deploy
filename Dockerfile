@@ -1,6 +1,8 @@
 # Build stage
 FROM node:lts-alpine AS build
 
+ARG $PORT
+
 WORKDIR /app
 
 COPY package.json package-lock.json ./
@@ -14,4 +16,4 @@ FROM httpd:2.4 AS runtime
 
 COPY --from=build /app/dist /usr/local/apache2/htdocs/
 
-EXPOSE 80
+EXPOSE $PORT
